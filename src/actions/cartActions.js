@@ -5,7 +5,7 @@ import { CART_ADD_ITEM, CART_CHECKOUT_DETAILS, CART_REMOVE_ITEM } from "../const
 
 export const addToCart = (productId,mainColor,mainSize, amount) => async (dispatch, getState) => {
 
-  const { data } = await axios.get(`https://xstore-app.herokuapp.com/api/products/${productId}`);
+  const { data } = await axios.get(`https://xstore-fashion.herokuapp.com/api/products/${productId}`);
   const product = data.product
   
   dispatch({

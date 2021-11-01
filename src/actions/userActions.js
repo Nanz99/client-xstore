@@ -17,7 +17,7 @@ export const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
   try {
     const { data } = await axios.post(
-      "https://xstore-app.herokuapp.com/api/users/signin",
+      "https://xstore-fashion.herokuapp.com/api/users/signin",
       { email, password }
     );
     dispatch({
@@ -40,7 +40,7 @@ export const register = (name, email, password) => async (dispatch) => {
   dispatch({ type: USER_REGISTER_REQUEST, payload: { name, email, password } });
   try {
     const { data } = await axios.post(
-      "https://xstore-app.herokuapp.com/api/users/register",
+      "https://xstore-fashion.herokuapp.com/api/users/register",
       {
         name,
         email,

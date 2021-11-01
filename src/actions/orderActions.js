@@ -27,7 +27,7 @@ export const createOrder = (order) => async (dispacth, getState) => {
     const {
       userSignin: { userInfo },
     } = getState();
-    const { data } = await axios.post("https://xstore-app.herokuapp.com/api/orders", order, {
+    const { data } = await axios.post("https://xstore-fashion.herokuapp.com/api/orders", order, {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -51,7 +51,7 @@ export const payOrder = (order, paypalResult) => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.put(`https://xstore-app.herokuapp.com/api/orders/${order._id}/pay`, paypalResult, {
+    const { data } = await axios.put(`https://xstore-fashion.herokuapp.com/api/orders/${order._id}/pay`, paypalResult, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
@@ -70,7 +70,7 @@ export const payOrderVnpay = (order, vnpayResult) => async (dispatch, getState) 
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.put(`https://xstore-app.herokuapp.com/api/orders/${order._id}/pay-vnpay`, vnpayResult, {
+    const { data } = await axios.put(`https://xstore-fashion.herokuapp.com/api/orders/${order._id}/pay-vnpay`, vnpayResult, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
@@ -110,7 +110,7 @@ export const paymentWithVNPAY =
     } = getState();
     try {
       const { data } = await axios.post(
-        "https://xstore-app.herokuapp.com/api/payment/create_vnpayurl",
+        "https://xstore-fashion.herokuapp.com/api/payment/create_vnpayurl",
         { orderId, amount, bankCode, orderDescription, orderType, language },
         {
           headers: {
@@ -141,7 +141,7 @@ export const detailsOrder = (orderId) => async (dispacth, getState) => {
     const {
       userSignin: { userInfo },
     } = getState();
-    const { data } = await axios.get(`https://xstore-app.herokuapp.com/api/orders/${orderId}`, {
+    const { data } = await axios.get(`https://xstore-fashion.herokuapp.com/api/orders/${orderId}`, {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -165,7 +165,7 @@ export const listOrderMine = () => async (dispatch, getState) => {
   } = getState();
 
   try {
-    const { data } = await axios.get("https://xstore-app.herokuapp.com/api/orders/mine", {
+    const { data } = await axios.get("https://xstore-fashion.herokuapp.com/api/orders/mine", {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
