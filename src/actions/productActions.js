@@ -44,7 +44,7 @@ export const listProducts = () => async (dispatch) => {
     type: PRODUCT_LIST_REQUEST,
   });
   try {
-    const { data } = await axios.get("/api/products");
+    const { data } = await axios.get("https://xstore-app.herokuapp.com/api/products");
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
@@ -56,7 +56,7 @@ export const getProductsBySearch =
   async (dispatch) => {
     dispatch({ type: PRODUCT_SEARCH_REQUEST });
     try {
-      let { data } = await axios.get(`/api/products?keyword=${keyword}`);
+      let { data } = await axios.get(`https://xstore-app.herokuapp.com/api/products?keyword=${keyword}`);
 
       dispatch({ type: PRODUCT_SEARCH_SUCCESS, payload: data });
     } catch (error) {
@@ -72,7 +72,7 @@ export const getProductsByCategory =
   async (dispatch) => {
     dispatch({ type: PRODUCT_FILTERS_CATEGORY_REQUEST });
     try {
-      let { data } = await axios.get(`/api/products?category=${category}`);
+      let { data } = await axios.get(`https://xstore-app.herokuapp.com/api/products?category=${category}`);
 
       dispatch({ type: PRODUCT_FILTERS_CATEGORY_SUCCESS, payload: data });
     } catch (error) {
@@ -86,7 +86,7 @@ export const getProductsByPrice = (price) => async (dispatch) => {
   dispatch({ type: PRODUCT_FILTERS_PRICE_REQUEST });
   try {
     let { data } = await axios.get(
-      `/api/products?price[lte]=${price[1]}&price[gte]=${price[0]}`
+      `https://xstore-app.herokuapp.com/api/products?price[lte]=${price[1]}&price[gte]=${price[0]}`
     );
 
     dispatch({ type: PRODUCT_FILTERS_PRICE_SUCCESS, payload: data });
@@ -100,7 +100,7 @@ export const getProductsByPrice = (price) => async (dispatch) => {
 export const getProductsByRating = (rating) => async (dispatch) => {
   dispatch({ type: PRODUCT_FILTERS_RATING_REQUEST });
   try {
-    let { data } = await axios.get(`/api/products?rating[gte]=${rating}`);
+    let { data } = await axios.get(`https://xstore-app.herokuapp.com/api/products?rating[gte]=${rating}`);
 
     dispatch({ type: PRODUCT_FILTERS_RATING_SUCCESS, payload: data });
   } catch (error) {
@@ -117,7 +117,7 @@ export const productDetails = (productId) => async (dispatch) => {
     type: PRODUCT_DETAILS_REQUEST,
   });
   try {
-    const { data } = await axios.get(`/api/products/${productId}`);
+    const { data } = await axios.get(`https://xstore-app.herokuapp.com/api/products/${productId}`);
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data.product });
   } catch (error) {
     dispatch({
@@ -143,7 +143,7 @@ export const sortPriceLowest = () => async (dispatch) => {
     type: PRODUCT_PRICE_LOWEST_REQUEST,
   });
   try {
-    const { data } = await axios.get(`/api/products`);
+    const { data } = await axios.get(`https://xstore-app.herokuapp.com/api/products`);
     
     dispatch({ type: PRODUCT_PRICE_LOWEST_SUCCESS, payload: data});
     console.log(data)
@@ -164,7 +164,7 @@ export const sortPriceHighest = () => async (dispatch) => {
     type: PRODUCT_PRICE_HIGHEST_REQUEST,
   });
   try {
-    const { data } = await axios.get(`/api/products`);
+    const { data } = await axios.get(`https://xstore-app.herokuapp.com/api/products`);
     
     dispatch({ type: PRODUCT_PRICE_HIGHEST_SUCCESS, payload: data});
    
@@ -184,7 +184,7 @@ export const productFilterByColor = (color) => async (dispatch) => {
     type: PRODUCT_FILTERS_COLOR_REQUEST, payload: color
   });
   try {
-    const { data } = await axios.get(`/api/products`);
+    const { data } = await axios.get(`https://xstore-app.herokuapp.com/api/products`);
     
     dispatch({ type: PRODUCT_FILTERS_COLOR_SUCCESS, payload: {data, color }});
   } catch (error) {
@@ -204,7 +204,7 @@ export const sortBestRating = () => async (dispatch) => {
     type: PRODUCT_SORT_BEST_RATING_REQUEST,
   });
   try {
-    const { data } = await axios.get(`/api/products`);
+    const { data } = await axios.get(`https://xstore-app.herokuapp.com/api/products`);
     
     dispatch({ type: PRODUCT_SORT_BEST_RATING_SUCCESS, payload: data});
    
@@ -223,7 +223,7 @@ export const sortNewest = () => async (dispatch) => {
     type: PRODUCT_SORT_NEWEST_REQUEST,
   });
   try {
-    const { data } = await axios.get(`/api/products`);
+    const { data } = await axios.get(`https://xstore-app.herokuapp.com/api/products`);
     
     dispatch({ type: PRODUCT_SORT_NEWEST_SUCCESS, payload: data});
    
